@@ -1,0 +1,31 @@
+:root {
+    --cellheight: 2rem;
+    --cellwidth: 2rem;
+}
+
+#wrapper{
+    margin: auto;
+    text-align: center;
+}
+.row{
+    display: flex;
+}
+.cell{
+    width: var(--cellwidth);
+    max-width: var(--cellwidth);
+    height: var(--cellheight);
+    margin: 1px;
+    border: 1px solid rgb(150,150,150);
+    background: rgb(240,240,240);
+    vertical-align: middle;
+    line-height: var(--cellheight);
+    flex: 1;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.cell:hover:not(.revealed){
+    background: rgb(200,200,200) !important;
+}
+.revealed{
+    background: rgb(180,180,180) !important;
+}
