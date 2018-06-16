@@ -2,13 +2,75 @@
     --cellheight: 2rem;
     --cellwidth: 2rem;
 }
+html{
+    background: rgb(240,240,240);
+    font-size: 16px;
+    font-weight: bold;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    background: black;
+    color: rgb(100,100,100);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    font-size: 2rem;
+}
+nav li{
+    display: inline-block;
+    text-decoration: none;
+    margin: 1rem 1rem;
+    padding: 0.5rem;
+}
+nav li:hover{
+    color: rgb(200,200,200) !important;
+}
+.brand{
+    color: rgb(150,150,150);
+    margin: auto 2rem;
+}
+@media (max-width: 490px) {
+    nav li{
+        margin: 0.5rem 1rem;
+    }
+    #restart{
+        position: fixed;
+        bottom: 0;
+        right: 70px;
+        border: 5px outset black;
+        background: black;
+        border-radius: 45%;
+    }
+    #options{
+        position: fixed;
+        bottom: 0;
+        right: 0px;
+        border: 5px outset black;
+        background: black;
+        border-radius: 45%;
+    }
+    #wrapper{
+        margin: 60px auto !important;
+        padding-bottom: 1rem;
+    }
+}
 
 #wrapper{
-    margin: auto;
-    text-align: center;
+    margin: 120px auto;  
+    text-align: center; 
+    font-size: 1.6rem;    
 }
-.row{
-    display: flex;
+#scoreboard div, #minefield{
+    margin-bottom: 0.5rem;
+}
+#minefield{
+    text-align: center;
+    white-space: nowrap;
 }
 .cell{
     width: var(--cellwidth);
@@ -19,9 +81,8 @@
     background: rgb(240,240,240);
     vertical-align: middle;
     line-height: var(--cellheight);
-    flex: 1;
-    font-weight: bold;
-    font-size: 1.2rem;
+    display: inline-block;    
+    font-size: 1.4rem;
 }
 .cell:hover:not(.revealed){
     background: rgb(200,200,200) !important;

@@ -7,13 +7,21 @@
         <link rel="stylesheet" href="./css/fontawesome-all.min.css">
         <script src="./js/mines.js"></script>
     </head>
-    <body>        
+    <body>
+        <nav>
+            <ul>
+                <li class="brand">JS Minesweeper</li>
+                <li id="restart"><i class="fas fa-undo-alt"></i></li>
+                <li id="options"><i class="fas fa-sliders-h"></i></li>
+            </ul>
+        </nav>
         <div id="wrapper">
             <div id="scoreboard">
-                <div id="currentMines"></div>
-                <div id="time"></div>
+                <div><i class="fas fa-bomb"></i> <span id="currentMines"></span></div>
+                <div><i class="fas fa-stopwatch"> <span id="time">00:00:00</span></i></div>
             </div>
             <div id="minefield"></div>
+            <div id="message"></div>
         </div>
     </body>
 </html>
