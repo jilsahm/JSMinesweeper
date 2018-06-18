@@ -4,7 +4,11 @@ var currentGame = null;
 
 window.onload = function(){    
     newGame();
+    fillInputFields();
     document.getElementById( "restart" ).onclick = newGame;
+    document.getElementById( "options" ).onclick = toggleOptions;
+    document.getElementById( "accept_options" ).onclick = setOptions;
+    document.getElementById( "deny_options" ).onclick = toggleOptions;
 };
 
 var Options = {
@@ -252,4 +256,35 @@ function tryCheckingNeighbour( cell, x, y ){
     if ( currentGame.cells[y][x].bomb === true ){
         cell.proximity += 1;
     }
+}
+
+function fillInputFields(){
+    document.getElementById( "input_rows" ).value = Options.rows;
+    document.getElementById( "input_columns" ).value = Options.columns;
+    document.getElementById( "input_bombs" ).value = Options.bombs;
+}
+
+function toggleOptions(){
+    document.getElementById( "optionpopup" ).classList.toggle( "show" );
+}
+
+function setOptions(){
+    console.log( "Click" );
+    let numbers = /^[0-9]+$/;
+    let newRows = document.getElementById( "input_rows" ).value;
+    let newColumns = document.getElementById( "input_columns" ).value;
+    let newBombs = document.getElementById( "input_bombs" ).value;
+    
+    if ( numbers.test( newRows ) ){
+        Options.rows = newRows;
+    }
+    if ( numbers.test( newColumns ) ){
+        Options.columns = newColumns;
+    }
+    if ( numbers.test( newBombs ) ){
+        Options.bombs = newBombs;
+    }
+    newGame();
+    fillInputFields();
+    toggleOptions();
 }

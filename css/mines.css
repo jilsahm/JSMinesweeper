@@ -1,6 +1,7 @@
 :root {
     --cellheight: 2rem;
     --cellwidth: 2rem;
+    --iconcolor_bg: rgb(100,100,100);
 }
 html{
     background: rgb(240,240,240);
@@ -13,7 +14,7 @@ ul{
 }
 nav{
     background: black;
-    color: rgb(100,100,100);
+    color: var(--iconcolor_bg);
     position: fixed;
     top: 0;
     left: 0;
@@ -27,7 +28,7 @@ nav li{
     margin: 1rem 1rem;
     padding: 0.5rem;
 }
-nav li:hover{
+nav li:hover, .buttongroup i:hover{
     color: rgb(200,200,200) !important;
 }
 .brand{
@@ -89,4 +90,38 @@ nav li:hover{
 }
 .revealed{
     background: rgb(180,180,180) !important;
+}
+#optionpopup{
+    visibility: hidden;
+    position: fixed;
+    top: 25%;
+    left: 10px;
+    z-index: 100;
+    border: 2px solid black;
+    background: black;
+    border-radius: 10px;
+    color: var(--iconcolor_bg);
+    margin: auto;
+    padding: 10px;
+    width: 250px;
+}
+.show{
+    visibility: visible !important;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.flex i{
+    flex: 1;
+    font-size: 1.2rem;
+}
+.flex input{
+    flex: 1;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.buttongroup{
+    margin-top: 10px;
 }
