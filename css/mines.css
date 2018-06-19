@@ -107,6 +107,16 @@ nav li:hover, .buttongroup i:hover{
 }
 .show{
     visibility: visible !important;
+    -webkit-animation: spawn 0.8s;
+    animation: spawn 0.8s;
+}
+@-webkit-keyframes spawn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes spawn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
 }
 .flex{
     display: flex;
@@ -124,4 +134,12 @@ nav li:hover, .buttongroup i:hover{
 }
 .buttongroup{
     margin-top: 10px;
+}
+.testimage{
+    background: black;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
 }

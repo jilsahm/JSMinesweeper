@@ -9,12 +9,15 @@ window.onload = function(){
     document.getElementById( "options" ).onclick = toggleOptions;
     document.getElementById( "accept_options" ).onclick = setOptions;
     document.getElementById( "deny_options" ).onclick = toggleOptions;
+    
 };
 
 var Options = {
     "columns"    : 8,
     "rows"       : 10,
-    "bombs"      : 12
+    "bombs"      : 12,
+    "maxColumns" : 100,
+    "maxRows"    : 100
 }
 
 function GameFactory(){
@@ -68,7 +71,7 @@ class Game{
         if ( this.totalcells === this.bombs && !this.over ){
             this.stop();
         }
-        console.log( this.totalcells );
+        //console.log( this.totalcells );
     }
 }
 
@@ -187,6 +190,7 @@ function newGame(){
     document.getElementById( "currentMines" ).innerHTML = Options.bombs;
     document.getElementById( "time" ).innerHTML = "00:00:00";  
     document.getElementById( "message" ).innerHTML = "";
+    console.log( Options );
 }
 
 function updateFlagCount( mod ){
@@ -217,8 +221,8 @@ function setupBombs( clickedCell ){
         let randomX = Math.floor( Math.random() * currentGame.columns );
         let randomY = Math.floor( Math.random() * currentGame.rows );
         if ( currentGame.cells[randomY][randomX].empty() &&
-             randomX !== clickedCell.x &&
-             randomY !== clickedCell.y ){
+             !( randomX === clickedCell.x &&
+             randomY === clickedCell.y ) ){
                 currentGame.cells[randomY][randomX].bomb = true ;
                 availableBombs -= 1;
         }        
@@ -276,13 +280,17 @@ function setOptions(){
     let newBombs = document.getElementById( "input_bombs" ).value;
     
     if ( numbers.test( newRows ) ){
-        Options.rows = newRows;
+        newRows = Number( newRows );
+        Options.rows = ( newRows <= Options.maxRows ) ? newRows : Options.maxRows;
     }
     if ( numbers.test( newColumns ) ){
-        Options.columns = newColumns;
+        newColumns = Number( newColumns );
+        Options.columns = ( newColumns <= Options.maxColumns ) ? newColumns : Options.maxColumns;
     }
     if ( numbers.test( newBombs ) ){
-        Options.bombs = newBombs;
+        newBombs = Number( newBombs );
+        let bombcap = Math.floor( Options.columns * Options.rows / 2 );        
+        Options.bombs = ( newBombs <= bombcap ) ? newBombs : bombcap;
     }
     newGame();
     fillInputFields();
