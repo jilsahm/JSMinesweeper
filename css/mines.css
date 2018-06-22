@@ -1,59 +1,71 @@
 :root {
     --cellheight: 2rem;
     --cellwidth: 2rem;
-    --iconcolor_bg: rgb(100,100,100);
+    --iconcolor_bg: rgba(255,255,255,.5);
+    --navcolor: rgb(2,47,0);
+    --sitebackground: rgb(230,255,230);
+    --hovercolor: rgba(255,255,255,.75);
 }
 html{
-    background: rgb(240,240,240);
+    background: var(--sitebackgroud);
     font-size: 16px;
-    font-weight: bold;
+}
+body{
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 ul{
     margin: 0;
     padding: 0;
 }
 nav{
-    background: black;
+    background: var(--navcolor);
     color: var(--iconcolor_bg);
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: auto;
-    font-size: 2rem;
+    height: 40px;
+    padding: 0.5rem 1rem;
 }
-nav li{
+nav li:not(.brand){
     display: inline-block;
     text-decoration: none;
-    margin: 1rem 1rem;
-    padding: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    padding-right: 1rem;
+    padding-left: 1rem;
 }
-nav li:hover, .buttongroup i:hover{
-    color: rgb(200,200,200) !important;
+a{
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+}
+nav li:hover:not(.brand), .buttongroup i:hover, a:hover{
+    color: var(--hovercolor) !important;
 }
 .brand{
-    color: rgb(150,150,150);
-    margin: auto 2rem;
+    color: white;
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
 }
 @media (max-width: 490px) {
-    nav li{
-        margin: 0.5rem 1rem;
+    #restart, #options{
+        font-size: 2rem;
+        position: fixed;        
+        bottom: 5px;
+        border: 5px outset var(--navcolor);
+        background: var(--navcolor);
+        border-radius: 50%;
     }
     #restart{
-        position: fixed;
-        bottom: 0;
-        right: 70px;
-        border: 5px outset black;
-        background: black;
-        border-radius: 45%;
+        right: 85px;        
     }
     #options{
-        position: fixed;
-        bottom: 0;
-        right: 0px;
-        border: 5px outset black;
-        background: black;
-        border-radius: 45%;
+        right: 5px;
     }
     #wrapper{
         margin: 60px auto !important;
@@ -64,7 +76,8 @@ nav li:hover, .buttongroup i:hover{
 #wrapper{
     margin: 120px auto;  
     text-align: center; 
-    font-size: 1.6rem;    
+    font-size: 1.6rem; 
+    font-weight: bold;
 }
 #scoreboard div, #minefield{
     margin-bottom: 0.5rem;
@@ -86,19 +99,19 @@ nav li:hover, .buttongroup i:hover{
     font-size: 1.4rem;
 }
 .cell:hover:not(.revealed){
-    background: rgb(200,200,200) !important;
+    background: rgb(200,220,200) !important;
 }
 .revealed{
-    background: rgb(180,180,180) !important;
+    background: rgb(180,200,180) !important;
 }
 #optionpopup{
     visibility: hidden;
     position: fixed;
     top: 25%;
-    left: 10px;
+    left: 15px;
     z-index: 100;
-    border: 2px solid black;
-    background: black;
+    border: 2px solid var(--navcolor);
+    background: var(--navcolor);
     border-radius: 10px;
     color: var(--iconcolor_bg);
     margin: auto;
@@ -125,7 +138,6 @@ nav li:hover, .buttongroup i:hover{
 }
 .flex i{
     flex: 1;
-    font-size: 1.2rem;
 }
 .flex input{
     flex: 1;
